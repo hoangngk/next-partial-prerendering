@@ -4,13 +4,14 @@ import {
   ShoppingCartIcon,
 } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import { CartCount } from '#/components/cart-count';
-import { cookies } from 'next/headers';
 import { Suspense } from 'react';
+import { CartCount } from './cart-count';
+import { cookies } from 'next/headers';
 
 async function CartCountFromCookies() {
-  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
-  return <CartCount initialCartCount={cartCount} />;
+  const initialCartCount = Number(cookies().get('_cart_count')?.value || '0');  
+  
+  return <CartCount initialCount={initialCartCount}/>;
 }
 
 export function Header() {

@@ -1,8 +1,9 @@
-import { CartCountProvider } from "#/components/cart-count-context";
+
 import { Header } from "#/components/header";
 import { Sidebar } from "#/components/sidebar";
 import { Metadata } from "next";
 import { GlobalStyles } from "./styles";
+import { CartCountProvider } from "#/components/cart-count-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://partialprerendering.com"),

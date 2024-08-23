@@ -1,8 +1,9 @@
 'use client';
 
-import { useCartCount } from '#/components/cart-count-context';
+import { useCartCount } from './cart-count-context';
 
-export function CartCount({ initialCartCount }: { initialCartCount: number }) {
-  const [count] = useCartCount(initialCartCount);
+export function CartCount({ initialCount }: { initialCount: number }) {
+  const [count] = useCartCount(initialCount);
+  
   return <span>{count}</span>;
 }

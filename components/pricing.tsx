@@ -7,9 +7,9 @@ import { ProductSplitPayments } from '#/components/product-split-payments';
 import { ProductUsedPrice } from '#/components/product-used-price';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import { Suspense } from 'react';
-import { AddToCart } from '#/components/add-to-cart';
 import { delayShippingEstimate, withDelay } from '#/lib/delay';
 import { cookies } from 'next/headers';
+import { AddToCart } from './add-to-cart';
 
 async function AddToCartFromCookies() {
   // Get the cart count from the users cookies and pass it to the client

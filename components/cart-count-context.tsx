@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const CartCountContext = React.createContext<
-  | [null | number, React.Dispatch<React.SetStateAction<null | number>>]
-  | undefined
->(undefined);
+export const CartCountContext = createContext<
+  | [number | null, React.Dispatch<React.SetStateAction<number | null>>]
+>([null, () => {}]);
 
 export function CartCountProvider({ children }: { children: React.ReactNode }) {
-  const [optimisticCartCount, setOptimisticCartCount] = useState<null | number>(
-    null,
+  const [optimisticCartCount, setOptimisticCartCount] = useState<number | null>(
+    null
   );
 
   return (
@@ -22,14 +21,17 @@ export function CartCountProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useCartCount(
-  initialCount: number,
-): [null | number, React.Dispatch<React.SetStateAction<null | number>>] {
-  const context = React.useContext(CartCountContext);
-  if (context === undefined) {
+  initialCount: number
+): [number | null, React.Dispatch<React.SetStateAction<number | null>>] {
+  const [count, setCount] = useContext(CartCountContext);
+
+  if (count === undefined && setCount === undefined) {
     throw new Error('useCartCount must be used within a CartCountProvider');
   }
-  if (context[0] === null) {
-    return [initialCount, context[1]];
+
+  if (count === null) {
+    return [initialCount, setCount];
   }
-  return context;
+
+  return [count, setCount];
 }

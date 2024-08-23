@@ -1,11 +1,8 @@
-import { Suspense } from 'react';
-import {
-  RecommendedProducts,
-  RecommendedProductsSkeleton,
-} from '#/components/recommended-products';
-import { Reviews, ReviewsSkeleton } from '#/components/reviews';
-import { SingleProduct } from '#/components/single-product';
-import { Ping } from '#/components/ping';
+import { Ping } from "#/components/ping";
+import { RecommendedProductsSkeleton, RecommendedProducts } from "#/components/recommended-products";
+import { ReviewsSkeleton, Reviews } from "#/components/reviews";
+import { SingleProduct } from "#/components/single-product";
+import { Suspense } from "react";
 
 export default function Page() {
   return (
